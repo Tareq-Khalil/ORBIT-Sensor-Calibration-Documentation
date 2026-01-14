@@ -76,4 +76,5 @@ Use least-squares linear regression mapping measured -> real (i.e., fit real = a
 
 ---
 
-Team 10345
+| **Team 10345** |
+|---------------|
