@@ -1,17 +1,17 @@
 # ORBIT-Sensor-Calibration-Documentation
 
-# HC-SR04 Ultrasonic Sensor — Calibration
+## HC-SR04 Ultrasonic Sensor — Calibration
 
-# Group 10345 — [ORBIT]
+## Group 10345 — [ORBIT]
 ---
-## 1. Purpose
+### 1. Purpose
 Short statement of purpose (1–2 lines):
 
 > This appendix documents the calibration procedure, raw data, calculation and software implementation used to correct systematic measurement error of the HC-SR04 ultrasonic distance sensor used in the Capstone project.
 
 ---
 
-## 2. Equipment & Conditions
+### 2. Equipment & Conditions
 - Sensor: HC-SR04
 - Controller: Raspberry Pi
 - Tools: Measuring Tape
@@ -22,14 +22,14 @@ Short statement of purpose (1–2 lines):
 
 ---
 
-## 3. Procedure
+### 3. Procedure
 1. Mount the HC-SR04 so its front face is perpendicular to the target.
 2. Place the target at known distances from the sensor.
 3. For each nominal distance record 10 measurements, then Compute the arithmetic mean.
 4. Repeat the proccess with 5 different distances.
 ---
 
-## 4. Raw Data (example template)
+### 4. Raw Data (example template)
 
 | Real Distance (cm) | Avg Measured (cm) | Error (Measured − Real) (cm) |
 | 10 | 11.2 | +1.20 |
@@ -42,7 +42,7 @@ Short statement of purpose (1–2 lines):
 
 ---
 
-## 5. Calibration model and calculation
+### 5. Calibration model and calculation
 We use a linear correction model (simple and effective for HC-SR04 across typical ranges):
 
 \[ D_{corrected} = a \cdot D_{measured} + b \]
@@ -52,7 +52,7 @@ Where:
 - \(D_{corrected}\) is the corrected distance (cm)  
 - \(a\) is the scale factor and \(b\) is the offset.
 
-### Calculation method
+#### Calculation method
 Use least-squares linear regression mapping measured -> real (i.e., fit real = a * measured + b). Using the example dataset above the fitted coefficients are:
 
 - **a = 0.975**  
@@ -64,7 +64,7 @@ Use least-squares linear regression mapping measured -> real (i.e., fit real = a
 
 ---
 
-## 6. Before vs After validation
+### 6. Before vs After validation
 | Real (cm) | Measured (cm) | Error before (cm) | Corrected (cm) | Error after (cm) |
 |---:|---:|---:|---:|---:|
 | 10 | 11.2 | +1.20 | 10.23 | +0.23 |
